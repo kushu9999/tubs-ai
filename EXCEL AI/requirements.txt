@@ -1,0 +1,9 @@
+langchain
+boto3
+pandas
+langchain_experimental
+tabulate
+python-dotenv
+openpyxl
+protobuf==3.20.1
+langchain-openai

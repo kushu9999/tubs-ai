@@ -1,0 +1,9 @@
+[server]
+port = 8001
+
+[theme]
+primaryColor="pink"
+backgroundColor="#f3f1f0"
+secondaryBackgroundColor="pink"
+textColor="black"
+font="sans serif"
