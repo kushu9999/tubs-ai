@@ -8,9 +8,8 @@ llm = ChatOpenAI(temperature=0.0, model="gpt-4-1106-preview")
 llm2 = ChatOpenAI(temperature=0.0, model="gpt-3.5-turbo-1106")
 
 # Constants
-# EXCEL_FILE_PATH = "./TubsSales.xlsx"
-LOGO_PATH = "./images/logo.png"
-USER_AVATAR_PATH = "./images/user.png"
+LOGO_PATH = "./images/small-logo.png"
+USER_AVATAR_PATH = "./images/user-white.jpeg"
 
 # Function to handle user input
 def handle_user_input(query):
