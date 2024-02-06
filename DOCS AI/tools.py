@@ -82,4 +82,16 @@ immigration_tool = Tool.from_function(
     description="This tool is useful to get answers related to various queries related to new foundland immigration. use this tool if you get keywords like 'immigration', 'new foundland', 'newfoundland', 'new foundland immigration' etc",
 )
 
-total_tools = [rental_agreement_tool, car_lease_agreement_tool, business_partnership_agreements_tool, immigration_tool]
+def lavender(query:str):
+    qa = base_model(vectorstore_path = "models/lavender/faiss_index")
+    result = qa(query)
+    return result
+
+
+lavender_tool = Tool.from_function(
+    name="search related to lavender",
+    func=lavender,
+    description="This tool is useful to get answers related to various queries related to lavender. use this tool if you get keywords like 'lavender', 'lavender farming', 'lavender guide', 'pocket guide lavender' etc",
+)
+
+total_tools = [rental_agreement_tool, car_lease_agreement_tool, business_partnership_agreements_tool, immigration_tool, lavender_tool]
