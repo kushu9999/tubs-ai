@@ -10,7 +10,7 @@ st.header("Docs Expert AI 📄📜")
 # Initialize session_state.messages with avatar information
 if "messages" not in st.session_state:
     st.session_state.messages = [
-        {"role": "assistant", "content": "Hello! I'm Docs Expert AI assistant.", "avatar": "./images/avatar-logo.png"}
+        {"role": "assistant", "content": "Hello! I'm Docs Expert AI assistant.", "avatar": "./images/small-logo.png"}
     ]
 
 # Display existing chat history with avatars
