@@ -1,39 +1,36 @@
 import streamlit as st
-from datetime import datetime
-import time
-import threading
+import requests
 from agent import inference_agent
 
+USER_AVATAR_PATH = "./images/user-white.jpeg"
+LOGO_PATH = "./images/small-logo.png"
+
+# Setting title
 st.set_page_config(page_title=f"Docs Expert 📄📜")
 st.header("Docs Expert AI 📄📜")
 
-# Initialize session_state.messages with avatar information
+
+# Initialize session_state.messages if not present
 if "messages" not in st.session_state:
-    st.session_state.messages = [
-        {"role": "assistant", "content": "Hello! I'm Docs Expert AI assistant.", "avatar": "./images/small-logo.png"}
-    ]
+    st.session_state.messages = []
 
-# Display existing chat history with avatars
+# Display existing chat history
 for message in st.session_state.messages:
-
-    with st.chat_message(message["role"], avatar=message.get("avatar")):
+    with st.chat_message(message["role"], avatar=message["avatar"]):
         st.markdown(message["content"])
 
 if query := st.chat_input("Say something"):
-    user_avatar = "./images/user.png"  # Set user avatar
-
-    st.session_state.messages.append({"role": "user", "content": query, "avatar": user_avatar})
-    message = st.chat_message("user", avatar=user_avatar)
+    st.session_state.messages.append({"role": "user", "content": query, "avatar": USER_AVATAR_PATH})
+    message = st.chat_message("user", avatar=USER_AVATAR_PATH)
     message.write(query)
 
     with st.spinner('Getting results ....'):
         try:
             result = inference_agent(query)
-            lawyer_avatar = "./images/small-logo.png"
-            message = st.chat_message("assistant", avatar=lawyer_avatar)
+            message = st.chat_message("assistant", avatar=LOGO_PATH)
             message.write(result)
 
-            st.session_state.messages.append({"role": "assistant", "content": result, "avatar": lawyer_avatar})
+            st.session_state.messages.append({"role": "assistant", "content": result, "avatar": LOGO_PATH})
 
         except Exception as e:
             st.error(f"An error occurred: {str(e)}")
