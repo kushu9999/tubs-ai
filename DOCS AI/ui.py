@@ -29,7 +29,7 @@ if query := st.chat_input("Say something"):
     with st.spinner('Getting results ....'):
         try:
             result = inference_agent(query)
-            lawyer_avatar = "./images/avatar-logo.png"
+            lawyer_avatar = "./images/small-logo.png"
             message = st.chat_message("assistant", avatar=lawyer_avatar)
             message.write(result)
 
