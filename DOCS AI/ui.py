@@ -9,11 +9,11 @@ LOGO_PATH = "./images/small-logo.png"
 st.set_page_config(page_title=f"Docs Expert 📄📜")
 st.header("Docs Expert AI 📄📜")
 
-
-# Initialize session_state.messages if not present
+# Initialize session_state.messages with avatar information
 if "messages" not in st.session_state:
-    st.session_state.messages = []
-
+    st.session_state.messages = [
+        {"role": "assistant", "content": "Hello! I'm Docs Expert AI assistant.", "avatar": LOGO_PATH}
+    ]
 # Display existing chat history
 for message in st.session_state.messages:
     with st.chat_message(message["role"], avatar=message["avatar"]):
